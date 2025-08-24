@@ -1,26 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<config>
-    <!-- Web server port (Render provides PORT environment variable) -->
-    <entry key='web.port'>${PORT}</entry>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <!-- Load default config first -->
+    <entry key='config.default'>./conf/default.xml</entry>
 
-    <!-- Database Configuration (H2 for simple setups) -->
+    <!-- Web interface port -->
+    <entry key='web.port'>8082</entry>
+
+    <!-- Database connection (H2 embedded for default) -->
     <entry key='database.driver'>org.h2.Driver</entry>
-    <entry key='database.url'>jdbc:h2:/var/traccar/data/database</entry>
+    <entry key='database.url'>jdbc:h2:./data/database</entry>
     <entry key='database.user'>sa</entry>
     <entry key='database.password'></entry>
 
-    <!-- Logging -->
-    <entry key='logger.level'>info</entry>
-
-    <!-- Server parameters -->
-    <entry key='server.timeout'>300</entry>
-    <entry key='server.enableWeb'>true</entry>
-    <entry key='server.address'>0.0.0.0</entry>
-
-    <!-- Example device communication ports -->
-    <entry key='protocols.enable'>true</entry>
-    <entry key='geocoder.enable'>true</entry>
-    <entry key='geocoder.type'>nominatim</entry>
-    <entry key='geocoder.url'>https://nominatim.openstreetmap.org</entry>
-</config>
+    <!-- Optional: Server address (Render uses 0.0.0.0) -->
+    <entry key='web.address'>0.0.0.0</entry>
+</properties>
 
