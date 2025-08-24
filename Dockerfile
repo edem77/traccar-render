@@ -17,9 +17,9 @@ RUN wget https://github.com/traccar/traccar/releases/download/v${TRACCAR_VERSION
 # Copy config
 COPY traccar.xml $TRACCAR_HOME/conf/traccar.xml
 
-# Expose port
-EXPOSE 8082
+# Expose port (Render sets $PORT automatically)
+EXPOSE 8080
 
-# Start server
-CMD ["java", "-jar", "tracker-server.jar", "conf/traccar.xml"]
+# Start server dynamically using Render's $PORT
+CMD ["sh", "-c", "java -Dserver.port=$PORT -jar tracker-server.jar conf/traccar.xml"]
 
